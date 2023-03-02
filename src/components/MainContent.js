@@ -6,11 +6,11 @@ export default function MainContent() {
 
   const getMovies = async () => {
     const response = await fetch(
-      "https://imdb-api.com/en/API/MostPopularMovies/k_qwuodg9k"
+      "https://imdb-api.com/API/SearchTitle/k_qwuodg9k/jamesbond"
     );
     const data = await response.json();
-    setMovies(data.items);
-    console.log(data.items);
+    setMovies(data.results);
+    console.log(data.results);
   };
 
   useEffect(() => {
@@ -25,9 +25,7 @@ export default function MainContent() {
           key={index}
           image={movie.image}
           title={movie.title}
-          actors={movie.crew}
-          rating={movie.imDbRating}
-          releaseYear={movie.year}
+          description={movie.description}
         />
       ))}
     </>
