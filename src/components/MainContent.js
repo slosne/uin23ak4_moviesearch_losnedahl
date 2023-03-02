@@ -19,15 +19,30 @@ export default function MainContent() {
 
   return (
     <>
-      <h3>Result:</h3>
-      {movies?.map((movie, index) => (
-        <MovieCard
-          key={index}
-          image={movie.image}
-          title={movie.title}
-          description={movie.description}
-        />
-      ))}
+      <h3>Results:</h3>
+      <div className="article-container">
+        {movies?.map(function (movie, index) {
+          if (movies.indexOf(movie) < 10) {
+            return (
+              <MovieCard
+                key={index}
+                image={movie.image}
+                title={movie.title}
+                description={movie.description}
+              />
+            );
+          } else {
+            return null;
+          }
+        })}
+      </div>
     </>
   );
 }
+
+/* KILDER
+
+Popeye for StackOverflow(8. september, 2017). Is it possible to map only a portion of an array? (Array.map())
+https://stackoverflow.com/questions/39455224/is-it-possible-to-map-only-a-portion-of-an-array-array-map
+
+*/
